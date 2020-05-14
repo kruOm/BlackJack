@@ -12,7 +12,6 @@ def declareResult(playersBlackJack,playersCards,dealersBlackJack,dealersCards,Pl
     for everyCard in dealersCards:
         print(everyCard.suit, ' ', everyCard.rank)
     
-    
     print('\nPlayers Cards are: ')
     for everyCard in playersCards:
         print(everyCard.suit, ' ', everyCard.rank )
@@ -21,20 +20,24 @@ def declareResult(playersBlackJack,playersCards,dealersBlackJack,dealersCards,Pl
     print('\n', playersBlackJack[0],playersBlackJack[1])
     
     dealersTotal = dealersBlackJack[1]
-    
     playersTotal = playersBlackJack[1]
     
     if (playersTotal > dealersTotal and playersTotal <= 21):
         print('Players beats dealer')
-        PlayersBet.updateBalance(PlayersBet.bet)
-        
+        if playersTotal ==21:
+            print('Player hits blackjack')
+            PlayersBet.updateBalance(PlayersBet.bet*1.5)
+        else:
+            PlayersBet.updateBalance(PlayersBet.bet)
     elif (playersTotal < dealersTotal and dealersTotal <=21):
         print('Dealer beats Player')
+        if dealersTotal == 21:
+            print('Dealer Hits BlackJack')
         PlayersBet.updateBalance((PlayersBet.bet)*-1)
           
     elif (playersTotal <=21 and dealersTotal <=21 and playersTotal == dealersTotal):
         print('Both dealer and Player have same hand value. Its a push')
-        
+    
     elif (playersTotal <=21 and dealersTotal>21):
         print('Dealer goes bust. Player wins')
         PlayersBet.updateBalance(PlayersBet.bet)

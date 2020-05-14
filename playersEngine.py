@@ -9,12 +9,9 @@ Created on Wed May 13 00:47:25 2020
 import generateDeck as generateDeck
 import BlackJack as blackjack
     
-suit = ['Heart','Spades','Clubs','Diamonds']
-rank = [2,3,4,5,6,7,8,9,10,'J','Q','K','A']
-deck = []
-popIndex= 51
+popIndex= 51  
 
-deck = generateDeck.generateDeck(suit,rank,deck)
+deck = generateDeck.generateDeck()
 generateDeck.shuffleDeck(deck)
 
 def playersEngine(playerOrDealer,deck, popIndex):

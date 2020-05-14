@@ -9,7 +9,12 @@ Created on Sun May 10 20:53:59 2020
 import random
 from Card import Card
 
-def generateDeck(suit,rank,deck):
+def generateDeck():
+    suit = ['Heart','Spades','Clubs','Diamonds']
+    rank = [2,3,4,5,6,7,8,9,10,'J','Q','K','A']
+    deck = []
+  
+    
     for everyItem in suit:
         for everyRank in rank:
             deck.append(Card(everyItem,everyRank))
