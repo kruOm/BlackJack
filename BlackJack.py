@@ -14,7 +14,7 @@ def blackjack(playerOrDealer,playersBlackJackValue,*args):
     
     elif playersBlackJackValue >21: 
         
-        print('Inside Bust, Checking to see if A card is an Ace to reduce its value from 11 to 1')
+        #print('Inside Bust, Checking to see if A card is an Ace to reduce its value from 11 to 1')
         for everyBrokenTuple in args:
             for everyCard in everyBrokenTuple:
                 if everyCard.rank == 'A':

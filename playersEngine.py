@@ -17,7 +17,7 @@ popIndex= 51
 deck = generateDeck.generateDeck(suit,rank,deck)
 generateDeck.shuffleDeck(deck)
 
-def playersEngine(playerOrDealer,popIndex):
+def playersEngine(playerOrDealer,deck, popIndex):
     playersCards = []
     playerCard1 = generateDeck.pickCard(deck,popIndex)
     popIndex = popIndex-1
@@ -32,9 +32,9 @@ def playersEngine(playerOrDealer,popIndex):
     generateDeck.printCard(playerCard2)
     playersBlackJackValue = playerCard1.value + playerCard2.value
     playersBlackJack = blackjack.blackjack('Player', playersBlackJackValue,playersCards)
-    return(playersBlackJack,popIndex)    
+    return(playersBlackJack,popIndex, deck)    
 
-def playersEngineGamblingTime(playersBlackJack,popIndex):
+def playersEngineGamblingTime(playersBlackJack,deck,popIndex):
     playersBlackJackValue = playersBlackJack[1]
     playersCards = playersBlackJack[3]
     
@@ -55,9 +55,10 @@ def playersEngineGamblingTime(playersBlackJack,popIndex):
         if playersBlackJack[2]=='Bust':
             break
         
-    return(playersBlackJack,popIndex, playersCards)
+    return(playersBlackJack,popIndex, playersCards, deck)
 
-def dealersEngine(playerOrDealer,popIndex):
+def dealersEngine(playerOrDealer,deck ,popIndex):
+    
     dealersCards = []
     dealerCard1 = generateDeck.pickCard(deck,popIndex)
     popIndex = popIndex-1
@@ -73,9 +74,10 @@ def dealersEngine(playerOrDealer,popIndex):
     
     
     dealersBlackJack = blackjack.blackjack('Dealer', dealersBlackJackValue,dealersCards)
-    return(dealersBlackJack,popIndex)
 
-def dealersGamblingTime(dealersBlackJack,popIndex):
+    return(dealersBlackJack,popIndex, deck)
+
+def dealersGamblingTime(dealersBlackJack,deck,popIndex):
     dealersBlackJackValue = dealersBlackJack[1]
     dealersCards = dealersBlackJack[3]
 
@@ -93,4 +95,4 @@ def dealersGamblingTime(dealersBlackJack,popIndex):
         if dealersBlackJack[2]=='Bust':
             break
 
-    return(dealersBlackJack,popIndex,dealersCards)
+    return(dealersBlackJack,popIndex,dealersCards,deck)
